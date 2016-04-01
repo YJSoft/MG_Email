@@ -14,7 +14,7 @@ class MG_Email {
     }
     
     function is_valid($email) {
-        $response = json_decode($this->get('https://api.mailgun.net/v2/address/validate?address='.$email));
+        $response = (object) json_decode($this->get('https://api.mailgun.net/v2/address/validate?address='.$email));
         $this->spell_check = $response->did_you_mean ? $response->did_you_mean : '';
         
         //var_dump($response);
